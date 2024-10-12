@@ -1,0 +1,153 @@
+---
+title: "Homework5"
+format: html
+editor: visual
+---
+
+We are going to read in the two datasets, titled, "mat" and "port"
+
+```{r}
+#math <- read.csv("student-mat.csv")
+#port <- read.csv("student-por.csv")
+```
+
+```{r}
+#library(DBI)
+#library(dplyr)
+#dplyr::inner_join(mat, port, by=is.not(G1, G2, G3, paid, absences))
+
+```
+
+Categorical Variables
+
+**Contingency Tables:**
+
+Create a one-way contingency table, a two-way contingency table, and a three-way contingency table.
+
+```{r}
+#conTable1 = table(school)
+#print(conTable1)
+```
+
+Two-way contingency table
+
+```{r}
+#math <- math |>
+  #mutate(famsize = as.character(famsize),
+         #SexF = factor(Sex, levels = c("female", "male"), labels = c("Female", "Male"))
+#app_data
+```
+
+Three-way contingency table
+
+```{r}
+#math <- math |>
+  #mutate(famsize = as.character(famsize),
+         #school = as.character(school),
+         #SexF = factor(Sex, levels = c("female", "male"), labels = c("Female", "Male"))
+#app_data
+```
+
+```{r}
+#math <- math |>
+  #mutate(famsize = as.character(famsize),
+         #school = as.character(school),
+         #SexF = factor(Sex, levels = c("female", "male"), labels = c("Female", "Male")),
+         #MedU = as.numeric(medu)
+#app_data
+```
+
+Create a conditional two-way table using **table()**
+
+```{r}
+#table(port$age, port$absences, port$G1, port$G2, port$G3)
+```
+
+Numeric variables (and across groups)
+The numeric variables are age, absences, and the three test grades variables (G1, G2, and G3) from each
+data set (math and Portuguese).
+
+```{r}
+#math |>
+  #summarize(across(where(is.numeric), 
+                   #list("mean" = mean, "median" = median), 
+                   #.names = "{.fn}_{.col}"))
+
+#port |>
+  #summarize(across(where(is.numeric), 
+                   #list("mean" = mean, "median" = median), 
+                   #.names = "{.fn}_{.col}"))
+
+#math |>
+  #summarize(across(where(is.numeric), 
+                   #list("mean" = ~ mean(.x, na.rm = TRUE), "median" = ~ median(.x, na.rm = TRUE)), 
+                   #.names = "{.fn}_{.col}"))
+
+#port |>
+  #summarize(across(where(is.numeric), 
+                   #list("mean" = ~ mean(.x, na.rm = TRUE), "median" = ~ median(.x, na.rm = TRUE)), 
+                   #.names = "{.fn}_{.col}"))
+```
+
+```{r}
+#cor(math, method = c("pearson", "kendall", "spearman"))
+#cor(portuguese, method = c("pearson", "kendall", "spearman"))
+```
+
+```{r}
+#install.packages("ggplot2")
+# Load ggplot2
+#library("ggplot2")
+```
+
+```{r}
+#g <- ggplot(math |> drop_na(math$age), aes(x = math$age))
+#g + geom_density()
+
+#g01 <- ggplot(math |> drop_na(math$absences), aes(x = math$absences))
+#g01 + geom_density()
+
+#g02 <- ggplot(math |> drop_na(math$G1), aes(x = math$G1))
+#g02 + geom_density()
+
+#g03 <- ggplot(math |> drop_na(math$G2), aes(x = math$G2))
+#g03 + geom_density()
+
+#g04 <- ggplot(math |> drop_na(math$G3), aes(x = math$G3))
+#g04 + geom_density()
+
+#g1 <- ggplot(port |> drop_na(port$age), aes(x = port$age))
+#g1 + geom_density()
+
+#g2 <- ggplot(port |> drop_na(port$absences), aes(x = port$absences))
+#g2 + geom_density()
+
+#g3 <- ggplot(port |> drop_na(port$G1), aes(x = port$G1))
+#g3 + geom_density()
+
+#g4 <- ggplot(port |> drop_na(port$G2), aes(x = port$G2))
+#g4 + geom_density()
+
+#g5 <- ggplot(port |> drop_na(port$G3), aes(x = port$G3))
+#g5 + geom_density()
+```
+
+```{r}
+#gboxplot <- ggplot(app_data |> drop_na(math$age)
+#gboxplot + geom_boxplot(aes(x = math$age, fill = Diagnosis))
+```
+
+```{r}
+#gboxplot <- ggplot(math |> drop_na(math$age, math$G1)
+#gboxplot + geom_boxplot(aes(x = math$age, y = math$G1, fill = Diagnosis))
+```
+
+```{r}
+#gboxplot <- ggplot(port |> drop_na(port$age, port$G1)
+#gboxplot + geom_boxplot(aes(x = port$age, y = port$G1, fill = Diagnosis))
+```
+
+```{r}
+#gscatterplot <- ggplot(port |> drop_na(port$absences, port$G3, port$age))
+      #aes(x = port$absences, y=port$g3, color=port$age)
+```
